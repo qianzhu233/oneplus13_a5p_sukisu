@@ -203,7 +203,7 @@ jobs:
         run: |
           cd kernel_workspace
           # 定位 Image
-          IMAGE_PATH=$(find bazel-bin -name "Image" -type f | head -1)
+          IMAGE_PATH=$(find bazel-bin -name "Image" \( -type f -o -type l \) | head -1)
           if [ -z "$IMAGE_PATH" ]; then
             echo "Image not found!"
             exit 1
