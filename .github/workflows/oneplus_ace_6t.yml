@@ -201,7 +201,7 @@ jobs:
       - name: Apply KernelPatch (KPM) if enabled
         if: steps.check.outputs.should_cancel != 'yes' && inputs.enable_feature_x == true
         run: |
-          cd kernel_workspace
+          cd kernel_workspace/kernel_platform/common/out/arch/arm64/boot
           # 定位 Image
           IMAGE_PATH=$(find bazel-bin -name "Image" \( -type f -o -type l \) | head -1)
           if [ -z "$IMAGE_PATH" ]; then
